@@ -15,6 +15,18 @@
             <option value="2">上海</option>
             <option value="3">广州</option>
         </select>
+        <h1>Multiple checkboxes</h1>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+        <h1>选择框</h1>
+        <h2>单选时：</h2>
+        
     </div>
 </template>
 <script>
@@ -28,8 +40,9 @@ export default {
         return {
             isDone: this.done,
             date: "2020-12-15",
-            city:'2', 
-            username:'Pixie'
+            city:'', 
+            username:'Pixie',
+            checkedNames: []
         }
     },
     
