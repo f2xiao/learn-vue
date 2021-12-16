@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form input bindings</title>
+    <script src=""></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Form input -->
+      <p>用户的名字是：{{ username }}</p>
+      <input type="text" v-model="username" />
+      <input type="checkbox" v-model="isDone" />
+      <input type="date" v-model="date" />
+      <hr />
+      <input type="text" :value="username" />
+      <hr />
+      <select v-model="city">
+        <option value="">请选择城市</option>
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+        <option value="3">广州</option>
+      </select>
+      <h1>Multiple checkboxes</h1>
+      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+      <label for="jack">Jack</label>
+      <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+      <label for="john">John</label>
+      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+      <label for="mike">Mike</label>
+      <br />
+      <span>Checked names: {{ checkedNames }}</span>
+      <h1>选择框</h1>
+      <h2>单选时：</h2>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>

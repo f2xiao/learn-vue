@@ -19,23 +19,35 @@
         </span>
       </div>
 
+      <!-- conditional rendering -->
+
       <div>
         <p v-if="seen">现在你看到我了</p>
       </div>
+
+      <!-- list and loops rendering -->
 
       <div>
         <ol>
           <li v-for="todo in todos">{{ todo.text }}</li>
         </ol>
       </div>
+
+      <!-- handling user input -->
+      <!-- event directive: v-on:click, @ for short -->
       <div>
         <p>{{ message3 }}</p>
         <button @click="reverseMessage">反转消息</button>
       </div>
+
+      <!-- two-way data binding -->
+
       <div>
         <p>{{ message4 }}</p>
         <input v-model="message4" />
       </div>
+
+      <!-- composing with components -->
       <div>
         <ol>
           <todo-item
@@ -45,32 +57,6 @@
           ></todo-item>
         </ol>
       </div>
-
-      <!-- Form input -->
-      <p>用户的名字是：{{ username }}</p>
-      <input type="text" v-model="username" />
-      <input type="checkbox" v-model="isDone" />
-      <input type="date" v-model="date" />
-      <hr />
-      <input type="text" :value="username" />
-      <hr />
-      <select v-model="city">
-        <option value="">请选择城市</option>
-        <option value="1">北京</option>
-        <option value="2">上海</option>
-        <option value="3">广州</option>
-      </select>
-      <h1>Multiple checkboxes</h1>
-      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
-      <label for="jack">Jack</label>
-      <input type="checkbox" id="john" value="John" v-model="checkedNames" />
-      <label for="john">John</label>
-      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
-      <label for="mike">Mike</label>
-      <br />
-      <span>Checked names: {{ checkedNames }}</span>
-      <h1>选择框</h1>
-      <h2>单选时：</h2>
     </div>
   </body>
   <script src="main.js"></script>
