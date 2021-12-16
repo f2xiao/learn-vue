@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product page</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <link rel="stylesheet" href="./product-page.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="product">
+        <div class="product-image">
+          <img :src="image" />
+        </div>
+
+        <div class="product-info">
+          <a class="cart" :href="link">cart</a>
+          <h1>{{ product }}</h1>
+          <p>{{description}}</p>
+          <!-- conditional rendering -->
+          <p v-if="inStock">In Stock</p>
+          <p v-show="onSale">On Sale!</p>
+
+          <!-- list rendering -->
+          <ul class="sizes">
+            <li v-for="(size, index) in sizes" :key="index">{{size}}</li>
+          </ul>
+        </div>
+        <!-- attribute binding -->
+      </div>
+    </div>
+  </body>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        product: "Socks",
+        description: "A pair of warm, fuzzy socks",
+        image:
+          "https://www.vuemastery.com/images/challenges/vmSocks-green-onWhite.jpg",
+        link: "introduction.html",
+        inStock: true,
+        onSale: true,
+        sizes: ["S", "M", "L"],
+      },
+    });
+  </script>
+</html>

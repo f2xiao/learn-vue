@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data and methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">{{a}}</div>
+  </body>
+  <script>
+    const data = { a: 1 };
+
+    const vm = new Vue({
+      el: "#app",
+      data: data,
+      watch: {
+        a(newVal, oldVal) {
+          console.log(`old value: ${oldVal}, new value: ${newVal} `);
+        },
+      },
+    });
+    /* vm.$watch("a", function (newVal, oldVal) {
+      console.log(`old value: ${oldVal}, new value: ${newVal} `);
+    }); */
+    vm.a = 3;
+  </script>
+</html>

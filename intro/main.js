@@ -1,51 +1,32 @@
 const app = new Vue({
   el: "#app",
   data: {
-    message: "Hello Vue2!",
-  },
-});
-
-const app2 = new Vue({
-  el: "#app-2",
-  data: {
-    message: "页面加载于 " + new Date().toLocaleString(),
-  },
-});
-
-const app3 = new Vue({
-  el: "#app-3",
-  data: {
+    message1: "Hello Vue2!",
+    message2: "页面加载于 " + new Date().toLocaleString(),
     seen: false,
-  },
-});
-
-const app4 = new Vue({
-  el: "#app-4",
-  data: {
     todos: [
       { text: "学习 JavaScript" },
       { text: "学习 Vue" },
       { text: "整个牛项目" },
     ],
-  },
-});
-const app5 = new Vue({
-  el: "#app-5",
-  data: {
-    message: "Hello Vue.js!",
+    message3: "Hello Vue.js!",
+    message4: "Hello Vue!",
+    groceryList: [
+      { id: 0, text: "蔬菜" },
+      { id: 1, text: "奶酪" },
+      { id: 2, text: "随便其它什么人吃的东西" },
+    ],
+    isDone: false,
+    date: "2020-12-15",
+    city: "",
+    username: "Pixie",
+    checkedNames: [],
   },
   methods: {
     reverseMessage: function (a) {
       console.log(a.target);
-      this.message = this.message.split("").reverse().join("");
+      this.message3 = this.message3.split("").reverse().join("");
     },
-  },
-});
-
-const app6 = new Vue({
-  el: "#app-6",
-  data: {
-    message: "Hello Vue!",
   },
 });
 
@@ -54,13 +35,4 @@ Vue.component("todo-item", {
   template: "<li>{{ todo.text }}</li>",
 });
 
-const app7 = new Vue({
-  el: "#app-7",
-  data: {
-    groceryList: [
-      { id: 0, text: "蔬菜" },
-      { id: 1, text: "奶酪" },
-      { id: 2, text: "随便其它什么人吃的东西" },
-    ],
-  },
-});
+app.message1 = "Hello Vue";
