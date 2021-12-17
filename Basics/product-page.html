@@ -16,20 +16,31 @@
         </div>
 
         <div class="product-info">
-          <a class="cart" :href="link">cart</a>
           <h1>{{ product }}</h1>
           <p>{{description}}</p>
           <!-- conditional rendering -->
           <p v-if="inStock">In Stock</p>
+          <p v-if="!inStock" :class='{strikeThrough: !inStock}'>Out of Stock</p>
           <p v-show="onSale">On Sale!</p>
 
           <!-- list rendering -->
-          <ul class="sizes">
-            <li v-for="(size, index) in sizes" :key="index">{{size}}</li>
-          </ul>
+          <p>Sizes:</p>
+          <div class="sizes">
+            <ul>
+              <li @click="selectedSize" v-for="(size, index) in sizes" :key="index"><span>{{size}}</span></li>
+            </ul>
+          </div>
+         
+          
+          <div>
+            <button @click='addToCart' :disabled="!inStock" :class='{disabledButton:!inStock}'>Add to cart</button>
+          <button @click='removeFromCart' :disabled='cart===0' :class='{disabledButton: cart===0}'>remove from cart</button>
+          <div class="cart">
+            <p>Cart({{cart}})</p></div>
         </div>
-        <!-- attribute binding -->
-      </div>
+          </div>
+         
+      </div> 
     </div>
   </body>
   <script>
@@ -44,6 +55,19 @@
         inStock: true,
         onSale: true,
         sizes: ["S", "M", "L"],
+        cart:0,
+      },
+      methods: {
+        addToCart(){
+          this.cart++;
+        },
+        removeFromCart(){
+          if(this.cart===0) return;
+          this.cart--;
+        },
+        selectedSize(e){
+          console.log(e.target.textContent);
+        }
       },
     });
   </script>
