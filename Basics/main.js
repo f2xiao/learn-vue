@@ -16,11 +16,11 @@ const app = new Vue({
       { id: 1, text: "奶酪" },
       { id: 2, text: "随便其它什么人吃的东西" },
     ],
-    isDone: false,
+    isDone:'',
     date: "2020-12-15",
     city: "",
     username: "Pixie",
-    checkedNames: [],
+    checkedNames:'',
   },
   methods: {
     reverseMessage: function (a) {

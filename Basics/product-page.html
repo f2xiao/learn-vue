@@ -10,20 +10,45 @@
   </head>
   <body>
     <div id="app">
-      <div class="product">
+      
+      <product :premium="isPremium"></product>
+      
+      
+
+    </div>
+  </body>
+  <script>
+
+Vue.component('product', {
+  props:["premium"],
+  data(){
+    return{
+      brand:"Vue",
+        product: "Socks",
+        description: "A pair of warm, fuzzy socks",
+        image:
+          "https://www.vuemastery.com/images/challenges/vmSocks-green-onWhite.jpg",
+        link: "introduction.html",
+        inStock: true,
+        onSale: false,
+        sizes: ["S", "M", "L"],
+        cart:0,
+    }
+  },
+      template: `<div class="product">
         <div class="product-image">
           <img :src="image" />
         </div>
 
         <div class="product-info">
-          <h1>{{ product }}</h1>
+          <h1>{{ title }}</h1>
           <p>{{description}}</p>
-          <!-- conditional rendering -->
+         
           <p v-if="inStock">In Stock</p>
           <p v-if="!inStock" :class='{strikeThrough: !inStock}'>Out of Stock</p>
-          <p v-show="onSale">On Sale!</p>
+          <p v-show="onSale">{{sale}}</p>
 
-          <!-- list rendering -->
+          
           <p>Sizes:</p>
           <div class="sizes">
             <ul>
@@ -31,31 +56,28 @@
             </ul>
           </div>
          
-          
+          <p>Shipping: {{shipping}}</p>
+
           <div>
             <button @click='addToCart' :disabled="!inStock" :class='{disabledButton:!inStock}'>Add to cart</button>
-          <button @click='removeFromCart' :disabled='cart===0' :class='{disabledButton: cart===0}'>remove from cart</button>
-          <div class="cart">
-            <p>Cart({{cart}})</p></div>
-        </div>
+            <button @click='removeFromCart' :disabled='cart===0' :class='{disabledButton: cart===0}'>remove from cart</button>
+            <div class="cart">
+              <p>Cart({{cart}})</p></div>
           </div>
+        </div>
          
       </div> 
-    </div>
-  </body>
-  <script>
-    const app = new Vue({
-      el: "#app",
-      data: {
-        product: "Socks",
-        description: "A pair of warm, fuzzy socks",
-        image:
-          "https://www.vuemastery.com/images/challenges/vmSocks-green-onWhite.jpg",
-        link: "introduction.html",
-        inStock: true,
-        onSale: true,
-        sizes: ["S", "M", "L"],
-        cart:0,
+     `,computed:{
+        sale(){
+          return this.brand +' '+this.product + ' is On Sale!'
+        },
+        title(){
+          return this.brand +' '+ this.product;
+        },
+        shipping(){
+          return this.premium? "Free" : "$2.99"
+        }
+
       },
       methods: {
         addToCart(){
@@ -70,5 +92,15 @@
         }
       },
     });
+
+    const app = new Vue({
+      el: "#app",
+      data: {
+        isPremium: true,
+      },
+    });
+
+  
+    
   </script>
 </html>
