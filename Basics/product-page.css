@@ -1,3 +1,6 @@
+*{
+  box-sizing: border-box;
+}
 body {
   font-family: tahoma;
   color: #282828;
@@ -36,6 +39,9 @@ img {
   flex-basis: 500px;
 }
 
+.strikeThrough{
+  text-decoration: line-through
+}
 .color-box {
   width: 40px;
   height: 40px;
@@ -51,12 +57,24 @@ img {
 
 .sizes {
   display: flex;
-  width: 200px;
+  width: 300px;
+}
+
+.sizes ul{
+  display: flex;
+  padding: 0;
+  /* flex-direction: row; */
 }
 .sizes li {
   width: 30%;
   margin: 5px;
   text-align: center;
+}
+
+.sizes li span{
+  display: inline-block;
+  width: 20px;
+  border-radius: 50%;
   background-color: #d8d8d8;
 }
 

@@ -7,11 +7,46 @@
     <title>Template syntax</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   </head>
+  <style>
+    h2{
+      color: #333;
+      font-size: large;
+    }
+  </style>
   <body>
     <div id="app">
-      <h1>Interpolations</h1>
-      <h2>Text</h2>
+      <h1>INTERPOLATIONS</h1>
+      <h2>text</h2>
+
+      <!-- interprets the data as plain text -->
       <p>Message: {{msg}}</p>
+
+      <h2>one time interpolation</h2>
+      <p v-once>This will never change: {{msg}}</p>
+
+      <h2>v-text: bind the tag's text content with the data</h2>
+      <p v-text="msg">This will never change: {{msg}}</p>
+      <h2>raw html: bind the tag's text content with the html</h2>
+
+      <h2>interprets the data as html</h2>
+       <p><span v-html="rawHtml"></span></p>
+
+       <h2>attributes</h2>
+       <div v-bind:id="dynamicId">{{dynamicId}}</div>
+       <button :disabled="isButtonDisabled">Button</button>
+
+       <h2>JS expression</h2>
+       <p>{{ok? 'Yes' : 'NO'}}</p>
+       <P v-bind:style="ok? 'color:blue' : 'color:red'">ABC</P>
+
+       <h2>dynamic arguments</h2> 
+       <a href="#" v-on:[eventName]="doSomething">Click</a>
+
+       <h2>modifiers</h2>
+       <form id="form" v-on:submit.prevent="onSubmit">Form
+        <button>Submit</button>
+       </form>
+
     </div>
   </body>
   <script>
@@ -19,7 +54,20 @@
       el: "#app",
       data: {
         msg: "hello world",
+        rawHtml: '<a href="https://www.google.ca">Google</a>',
+        dynamicId: 2,
+        isButtonDisabled: true,
+        ok: true,
+        eventname: "click"
       },
+      methods:{
+          doSomething(){
+            alert("clicked")
+          },
+          onSubmit(){
+            alert('submitted')
+          }
+        }
     });
   </script>
 </html>
