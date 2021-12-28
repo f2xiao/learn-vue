@@ -131,3 +131,21 @@ Vue wraps an observed array's mutation methods so they will also trigger view up
 You can open the console and play with previous example's items array by calling their mutation methods. For example, `vm1.items.push({message: 'Baz'})`
 
 ## Replacing an Array
+
+Mutation methods, as the name suggests, mutate the original araay they are called on. In comparison, there are also non-mutating methods, e.g. `filter()`, `concat()` and `slice()`, which do not mutate the original array but always return a new array. When working with non-mutating methods, you can replace the old array with the new one:
+
+```
+vm1.items = vm1.items.filter(function (item){
+    return item.message.match(/Foo/)
+})
+```
+
+You might think this will cause Vue to throw away the existing DOM and re-render the entire list, luckily, that is not the case. Vue implements some samrt heuristics to maximize DOM element reuse, so replacing an array with another array containing overlapping objects is a very efficient operation.
+
+## Caveats
+
+Due to limitations in JavaScript, there are types of changes that Vue can not detect with arrays and objects.
+
+# Displaying Filtered/Sorted Results
+
+Sometimes we want to display an filtered or sorted version of an array without actually mutating or resetting the original data. In this case, we can create a computed property that returns the filtered or sorted array.
