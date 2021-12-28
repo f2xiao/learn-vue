@@ -149,3 +149,121 @@ Due to limitations in JavaScript, there are types of changes that Vue can not de
 # Displaying Filtered/Sorted Results
 
 Sometimes we want to display an filtered or sorted version of an array without actually mutating or resetting the original data. In this case, we can create a computed property that returns the filtered or sorted array.
+
+For example:
+
+```
+<li v-for="n in evenNumbers">{{n}}</li>
+```
+
+```
+data: {
+    numbers: [1,2,3,4,5]
+},
+computed:{
+    evenNumbers: function() {
+        return this.numbers.filter(function(number){
+            return number % 2 === 0;
+        })
+
+    }
+}
+```
+In situations where computed properties are not feasible(e.g. inside nested `v-for` loops), you can use a method:
+
+```
+<ul v-for="set in sets">
+ <li v-for="n in even(set)">{{n}}</li>
+</ul>
+```
+```
+data:{
+    sets: [[1,2,3,4,5],[6,7,8,9,10]]
+},
+methods: {
+    even: function(numbers){
+        return numbers.filter(function(number){
+            return number % 2 ===0
+        })
+    }
+}
+```
+
+# `v-for` with Range
+
+`v-for` can also take an integer, in this case it will repeat the template that many times.
+```
+<div><span v-for="n in 10">{{n}}</span></div>
+
+```
+
+# `v-for` with `<template>`
+Similar to template `v-if`, you can also use a `<template>` tag with `v-for` to render a block of multiple elments:
+
+```
+<ul>
+    <template v-for="item in items">
+        <li>{{item.msg}}</li>
+        <li class="divider" role="presentation"></li>
+    </template>
+</ul>
+```
+
+# `v-for` with `v-if`
+
+When they exist on the same node, `v-for` has a higher priority than `v-if`. That means the `v-if` will run on each itertion of the loop separately. This can be usful when you want to render nodes for only some items, like below:
+```
+<li v-for="todo in todos" v-if="!todo.isComplete">
+    {{todo}}
+</li>
+```
+The above only renders todo that are not complete.
+If instead, you intent is to conditionally skip execution of the loop, you can place the `v-if` on a wrapper element (or `<template>`). For example:
+
+```
+<ul v-if="todos.length">
+    <li v-for="todo in todos">{{todo}}</li>
+</ul>
+<p v-else>No todos left!</p>
+```
+
+# `v-for` with Component
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
