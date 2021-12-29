@@ -8,7 +8,7 @@ v-model will ignore the initial value, checked, or selected attributes found on 
 v-model iternally uses different properties and emits different events for different input elements:
 
 - text and texteare elements use `value` property and `input` event
-- checkboxes and radiobutton use `checked` property and `change` event
+- checkboxes and radio button use `checked` property and `change` event
 - select fields use `value` property and `change` event
   **Note** For languages that require IME, you will notice that `v-model` doesn't get updated during IME composition. If you want to cater to these updates as well, use the `input` event instead.
 
