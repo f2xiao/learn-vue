@@ -9,30 +9,56 @@
   </head>
   <body>
     <div id="blog">
+      <table>
+        <tr
+          is="blog-post"
+          v-for="post in posts"
+          v-bind:key="post.id"
+          v-bind:post="post"
+          v-on:enlarge-text="postFontSize += $event"
+        ></tr>
+      </table>
+      <alert-box>Something bad happened.</alert-box>
+      <custom-input v-model="searchText"></custom-input>
       <div :style="{fontSize: postFontSize + 'em'}">
         <blog-post
           v-for="post in posts"
           v-bind:key="post.id"
           v-bind:post="post"
-          v-on:click="enlarge"
+          v-on:enlarge-text="postFontSize += $event"
         ></blog-post>
       </div>
     </div>
   </body>
   <script>
+    Vue.component("alert-box", {
+      template: `
+    <div class="demo-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `,
+    });
     Vue.component("blog-post", {
       props: ["post"],
       template: `
         <div class="blog-post">
           <h3>{{ post.title }}</h3>
-          <button>Enlarge text</button>
+         <button v-on:click="$emit('enlarge-text', 0.1)" >Enlarge text</button>
           <div v-html="post.content"></div>
         </div> 
       `,
     });
+    Vue.component("custom-input", {
+      props: ["value"],
+      template: `<input v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+      >`,
+    });
     const vm = new Vue({
       el: "#blog",
       data: {
+        searchText: "",
         postFontSize: 1,
         posts: [
           {
@@ -51,12 +77,6 @@
             content: "<p>...content...</p>",
           },
         ],
-      },
-      methods: {
-        enlarge: function () {
-          this.postFontSize += 0.1;
-          console.log("clicked");
-        },
       },
     });
   </script>

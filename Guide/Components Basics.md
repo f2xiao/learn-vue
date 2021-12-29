@@ -181,52 +181,83 @@ Now, whenever a new property is added to `post` objects, it will automatically b
 
 # Listening to Child Components Events
 
-As we develop our blog-post component, some features may require communicating back up to the parent. For example, we may decide to include an accessibility feature to enlarge the text of blog posts, while leaving the rest of the page its default size:
+As we develop our blog-post component, some features may require communicating back up to the parent. For example, we have a click event in the child component and we want the parent to be able to listen to this event and do something after the event is triggered.
 
-In the parent, we can support this feature by adding a postFontSize data property:
-
-```
-
-```
-
-Which can be used in the template to control the font size of all blog posts:
-
-```
-
-```
-
-Now let's add a button to enlarge the text right before the content of every post:
-
-```
-
-```
-
-The problem is, this button doesn't do anything:
-
-```
-
-```
+The idea is that it makes more sense to regiester the custom event listener on the parent component, then the child component emit the event via $emit method.
 
 When we click on the button, we need to communicate to the parent that it should enlarge the text of all posts. Fortunately, Vue instance provide a custom events system to solve this problem. The parent can shoose to listen to any event on the child component instance with v-on , just as we would with a native DOM event:
 
 ```
-
+ <blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:post="post"
+  v-on:enlarge-text="postFontSize += 0.1"
+></blog-post>
 ```
 
 Then the child component can emit an event on itself by calling the built-in $emit method, passing the name of the event:
 
 ```
-
+ <button v-on:click="$emit('enlarge-text')" >Enlarge text</button>
 ```
 
 Thanks to the v-on:enlarge-text="postFontSize += 0.1" listener, the parent will receive the event and update postFontSize value.
 
 ## Emitting a Value With an Event
 
+emit a specific value with an event, here want the component to be in charge of how much to enlarge the text by. Use $emit's 2nd parameter to provide this value:
+
+```
+ <button v-on:click="$emit('enlarge-text', 0.1)" >Enlarge text</button>
+```
+
+we listen to the event in the parent, we can access the emitted event's value with $event:
+
+```
+ <blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:post="post"
+  v-on:enlarge-text="postFontSize += $event"
+></blog-post>
+```
+
 ## Using v-model on Components
 
 # Content Distribution with Slots
 
+Write content in the custom component tag like normal html tags:
+
+```
+<alert-box>
+  Something bad happened.
+</alert-box>
+```
+
+then define where the content goes with the `<slot></slot>` tag in the Vue.component template:
+
+```
+Vue.component('alert-box', {
+  template: `
+    <div class="demo-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `
+})
+```
+
 # Dynamic Components
 
-# DOM Template PArsing Caveats
+dynamically switch between components with Vue's :
+
+# DOM Template Parsing Caveats
+
+HTML elements that have restrictions on what elements can appear inside them will lead to issues when using components inside them, the is special attribute offers a workaround:
+
+```
+<table>
+    <tr is="blog-post"></tr>
+</table>
+```
