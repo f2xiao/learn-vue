@@ -179,11 +179,51 @@ Use JavaScript's template literal in the template property to make multi-line te
 
 Now, whenever a new property is added to `post` objects, it will automatically be available inside `<blog-post>`.
 
-# Listening to Child Components
+# Listening to Child Components Events
 
 As we develop our blog-post component, some features may require communicating back up to the parent. For example, we may decide to include an accessibility feature to enlarge the text of blog posts, while leaving the rest of the page its default size:
 
-# Events
+In the parent, we can support this feature by adding a postFontSize data property:
+
+```
+
+```
+
+Which can be used in the template to control the font size of all blog posts:
+
+```
+
+```
+
+Now let's add a button to enlarge the text right before the content of every post:
+
+```
+
+```
+
+The problem is, this button doesn't do anything:
+
+```
+
+```
+
+When we click on the button, we need to communicate to the parent that it should enlarge the text of all posts. Fortunately, Vue instance provide a custom events system to solve this problem. The parent can shoose to listen to any event on the child component instance with v-on , just as we would with a native DOM event:
+
+```
+
+```
+
+Then the child component can emit an event on itself by calling the built-in $emit method, passing the name of the event:
+
+```
+
+```
+
+Thanks to the v-on:enlarge-text="postFontSize += 0.1" listener, the parent will receive the event and update postFontSize value.
+
+## Emitting a Value With an Event
+
+## Using v-model on Components
 
 # Content Distribution with Slots
 
