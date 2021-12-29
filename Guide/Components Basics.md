@@ -250,7 +250,16 @@ Vue.component('alert-box', {
 
 # Dynamic Components
 
-dynamically switch between components with Vue's :
+dynamically switch between components with Vue's `<component>` element with the `is` special attribute:
+
+```
+ <component v-bind:is="currentTabComponent" class="tab"></component>
+```
+
+The currentTabAttribute can contain either:
+
+- the name of a registered component, or
+- a component's options object
 
 # DOM Template Parsing Caveats
 
