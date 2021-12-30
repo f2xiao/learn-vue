@@ -60,5 +60,45 @@
         "component-a": componentA,
       },
     };
+
+    // with ES2015 modules
+    // in hypotherical ComponentB.js or ComponentB.vue
+    import ComponentA from "./ComponentA.vue";
+    export default {
+      components: {
+        ComponentA,
+      },
+      // ./..
+    };
+
+    // in hypotherical ComponentB.js or ComponentB.vue
+    import CompoentA from "./CompoentA";
+    import CompoentC from "./CompoentC";
+
+    export default{
+        components:{
+            CompoentA,
+            CompoentC
+        }
+        // ...
+    }
+
+    // globally register base components
+    import Vue from 'vue'
+    import upperFirst from 'lodash/upperFirst'
+    import camelCase from 'lodash/camelCase'
+    const requireComponent = require.context('./components',false,/Base[A-Z]\w+\.(vue|js)$/);
+    requireComponent.keys().forEach(fileName => {
+        const componentConfig = requireComponent(fileName);
+
+        const componentName = upperFirst(
+            camelCase(
+                fileName.split('/')
+                .pop()
+                .replace(/\.\w+$/,'')
+        ))
+
+        Vue.component(componentName, componentConfig.default || componentConfig)
+    });
   </script>
 </html>
