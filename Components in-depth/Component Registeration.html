@@ -7,10 +7,58 @@
     <title>Component Registeration</title>
     <script src="https://unpkg.com/vue"></script>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <component-a></component-a>
+      <component-b></component-b>
+      <component-c></component-c>
+    </div>
+  </body>
   <script>
-    Vue.component("my-component-name", {
+    //  globally registerd components
+    Vue.component("component-a", {
       /* ... */
     });
+    Vue.component("component-b", {
+      /* ... */
+    });
+    Vue.component("component-c", {
+      /* ... */
+    });
+    new Vue({
+      el: "#app",
+    });
+
+    // locally registered components
+    // 1. define components as objects
+    // 2. register the components in the template of root Vue instance
+    const componentA = {
+      /* ... */
+    };
+    const componentB = {
+      /* ... */
+    };
+    const componentC = {
+      /* ... */
+    };
+
+    new Vue({
+      el: "#app",
+      components: {
+        "component-a": componentA,
+        "component-b": componentB,
+        "component-c": componentC,
+      },
+    });
+
+    // locally registered component inside another locally registered component
+    const componentA = {
+      /* ... */
+    };
+    const componentB = {
+      components: {
+        "component-a": componentA,
+      },
+    };
   </script>
 </html>
