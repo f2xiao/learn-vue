@@ -7,6 +7,15 @@
     <title>Props</title>
     <script src="https://unpkg.com/vue"></script>
   </head>
-  <body></body>
-  <script></script>
+  <body>
+    <!-- kebab-case in HTML -->
+    <blog-post post-title="Hello!"></blog-post>
+  </body>
+  <script>
+    Vue.component("blog-post", {
+      // camelCase in JavaScript
+      props: ["postTitle"],
+      template: `<h3>{{postTitle}}</h3>`,
+    });
+  </script>
 </html>
