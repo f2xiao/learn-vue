@@ -2,7 +2,7 @@
   <div class="right-container">
     <h3>Right Component</h3>
     <hr />
-    <count v-bind:initial-count="0"></count>
+    <count v-bind:initial-count="'10'"></count>
   </div>
 </template>
 <script>

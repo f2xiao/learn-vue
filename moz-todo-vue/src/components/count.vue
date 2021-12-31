@@ -7,7 +7,13 @@
 </template>
 <script>
 export default {
-  props: ["initialCount"],
+  props: {
+    initialCount: {
+      default: 0,
+      type: [Number, String],
+      //   required: true,
+    },
+  },
   data() {
     return {
       count: this.initialCount,
