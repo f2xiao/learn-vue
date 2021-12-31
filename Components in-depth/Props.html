@@ -8,14 +8,69 @@
     <script src="https://unpkg.com/vue"></script>
   </head>
   <body>
-    <!-- kebab-case in HTML -->
-    <blog-post post-title="Hello!"></blog-post>
+    <div id="app">
+      <!-- kebab-case in HTML -->
+      <blog-post title="Hello!"></blog-post>
+      <blog-post v-bind:title="post.title"></blog-post>
+      <blog-post v-bind:title="post.title+' by '+post.author.name"></blog-post>
+
+      <p>Passing a number</p>
+
+      <blog-post v-bind:likes="42"></blog-post>
+      <blog-post v-bind:likes="post.likes"></blog-post>
+
+      <p>Passing a Boolean</p>
+      <blog-post v-bind:is-ublished="true"></blog-post>
+
+      <p>One way data flow</p>
+      <blog-post v-bind:initial-counter="3"></blog-post>
+      <p>Non-Prop Attributes</p>
+      <blog-post
+        data-date-picker="activated"
+        class="date-picker-theme-dark"
+      ></blog-post>
+    </div>
   </body>
   <script>
     Vue.component("blog-post", {
       // camelCase in JavaScript
-      props: ["postTitle"],
-      template: `<h3>{{postTitle}}</h3>`,
+      props: {
+        title: String,
+        likes: Number,
+        isPublished: Boolean,
+        commentsIds: Array,
+        author: Object,
+        callback: Function,
+        contactsPromise: Promise,
+        initialCounter: Number,
+      },
+      data: function () {
+        return {
+          counter: this.initialCounter,
+        };
+      },
+      template: `<div class="form-control"><h3>{{title}}</h3>
+      <p>{{likes}}</p>
+      <p>{{counter}}</p>
+      <p>{{initialCounter}}</p>
+      </div>
+      `,
+    });
+
+    new Vue({
+      el: "#app",
+      data: {
+        post: {
+          title: "Vue.js",
+          likes: 24,
+          isPublished: true,
+          commentsIds: [234, 266, 273],
+          author: {
+            name: "Evan Yu",
+            company: "Vue.js ORG",
+          },
+        },
+      },
     });
   </script>
 </html>
