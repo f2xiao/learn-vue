@@ -1,17 +1,25 @@
 <template>
   <div class="container">
     <h3>Left Component</h3>
+    <button>{{ countFromSon }}</button>
     <hr />
-    <ul>
-      <li><input type="text" /></li>
-    </ul>
-    <count></count>
+    <count @numChange="getNewCount"></count>
   </div>
 </template>
 <script>
 import count from "./count.vue";
 export default {
+  data: function () {
+    return {
+      countFromSon: 0,
+    };
+  },
   components: { count },
+  methods: {
+    getNewCount(val) {
+      this.countFromSon = val;
+    },
+  },
 };
 </script>
 <style lang="less" scoped>

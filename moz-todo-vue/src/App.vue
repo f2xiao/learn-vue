@@ -8,9 +8,13 @@
         <li><to-do-item label="My ToDo Item" :done="false"></to-do-item></li>
       </ul>
     </div>
-    <div class="box">
-      <Left></Left>
-      <Right></Right>
+    <div>
+      <h1>Left and Right</h1>
+      <hr />
+      <div class="box">
+        <Left></Left>
+        <Right></Right>
+      </div>
     </div>
   </div>
 </template>
