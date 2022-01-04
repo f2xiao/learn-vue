@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h3>Left Component</h3>
+    <p>{{ poemFromRight }}</p>
     <button>{{ countFromSon }}</button>
     <hr />
     <count @numChange="getNewCount"></count>
@@ -8,10 +9,12 @@
 </template>
 <script>
 import count from "./count.vue";
+import bus from "./eventBus";
 export default {
   data: function () {
     return {
       countFromSon: 0,
+      poemFromRight: "",
     };
   },
   components: { count },
@@ -19,6 +22,11 @@ export default {
     getNewCount(val) {
       this.countFromSon = val;
     },
+  },
+  created() {
+    bus.$on("gotAPoem", (val) => {
+      this.poemFromRight = val;
+    });
   },
 };
 </script>

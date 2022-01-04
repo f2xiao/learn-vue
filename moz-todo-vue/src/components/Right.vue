@@ -3,13 +3,20 @@
     <h3>Right Component</h3>
     <hr />
     <count v-bind:initial-count="'10'"></count>
+    <button @click="generatePoem">pass a poem to the left</button>
   </div>
 </template>
 <script>
 import count from "./count.vue";
-
+import bus from "./eventBus";
 export default {
   components: { count },
+  methods: {
+    generatePoem() {
+      const poem = "there is an apple tree";
+      bus.$emit("gotAPoem", poem);
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
