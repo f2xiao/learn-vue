@@ -1,11 +1,13 @@
 <template>
   <div class="article-container">
       <!-- title -->
-      <div class="header-box"></div>
+      <div class="header-box">
+          <slot name="title"></slot>
+      </div>
       <!-- content -->
-      <div class="content-box"></div>
-      <!-- arthour -->
-      <div class="footer-box"></div>
+      <div class="content-box"><slot name="content"></slot></div>
+      <!-- author -->
+      <div class="footer-box"><slot name="author"></slot></div>
   </div>
 </template>
 
@@ -16,5 +18,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.article-container{
+    width: 300px;
+    margin: 0 auto;
+}
+.header-box{
+    height: 50px;
+    background: pink;
+}
+.content-box{
+    height: 450px;
+    background: lightblue;
+}
+.footer-box{
+    height: 50px;
+    background: orange;
+}
 </style>

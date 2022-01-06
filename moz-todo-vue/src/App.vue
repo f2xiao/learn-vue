@@ -32,7 +32,28 @@
         </Right>
       </div>
       <!-- Article Comp -->
-      <Article></Article>
+      <Article>
+        <template #title>
+          <h3>俠客行</h3>
+        </template>
+        <template #content>
+            <p>赵客缦胡缨，吴钩霜雪明；</p>
+             <p> 银鞍照白马，飒沓如流星。</p>
+              <p>十步杀一人，千里不留行；</p>
+              <p>事了拂衣去，深藏身与名。</p>
+              <p>闲过信陵饮，脱剑膝前横；</p>
+              <p>将炙啖朱亥，持觞劝侯嬴。</p>
+              <p>三杯吐然诺，五岳倒为轻；</p>
+              <p>眼花耳热后，意气素霓生。</p>
+              <p>救赵挥金槌，邯郸先震惊；</p>
+              <p>千秋二壮士，烜赫大梁城。</p>
+              <p>纵死侠骨香，不惭世上英；</p>
+              <p>谁能书阁下，白首太玄经。</p>
+        </template>
+        <template #author>
+          <p>李白</p>
+        </template>
+      </Article>
     </div>
   </div>
 </template>
@@ -66,6 +87,7 @@ export default {
     ToDoItem,
     Left,
     Right,
+    Article
   },
 };
 </script>
