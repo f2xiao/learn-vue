@@ -21,7 +21,7 @@ export default {
     console.log("Right is created");
   },
   destroyed(){
-    console.log("Right is destoryed");
+    console.log("Right is destroyed");
   }
 };
 </script>

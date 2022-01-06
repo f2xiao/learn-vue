@@ -30,8 +30,14 @@ export default {
     console.log("Left is created");
   },
   destroyed() {
-     console.log("Left is destoryed");
+     console.log("Left is destroyed");
 
+  },
+  activated() {
+    console.log("Left is activated")
+  },
+  deactivated() {
+    console.log("Left is deactivated")
   },
 };
 </script>
