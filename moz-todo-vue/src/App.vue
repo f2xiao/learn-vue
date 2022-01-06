@@ -15,7 +15,7 @@
         <button @click="showLeft" class="tab">show Left</button> 
         <button @click="showRight" class="tab">show Right</button>
       </div>
-      <div class="box">
+      <div class="box" style="display: none">
         <!-- exclude and include attributes use declared name if it existed -->
         <keep-alive include="MyLeft">
           <component :is="comName"></component>
@@ -31,6 +31,8 @@
          </template>
         </Right>
       </div>
+      <!-- Article Comp -->
+      <Article></Article>
     </div>
   </div>
 </template>
@@ -39,8 +41,10 @@
 // registered component name is Left
 import Left from "@/components/Slot-left.vue";
 import Right from "@/components/Slot-right.vue";
+import Article from "@/components/Article.vue"
 // import HelloWorld from './components/HelloWorld.vue'
 import ToDoItem from "@/components/ToDoItem.vue";
+
 
 export default {
   data(){
