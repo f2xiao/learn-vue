@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h3>Right Component</h3>
-    <slot name="smallText"></slot>
+    <slot name="smallText">There should be some text here</slot>
     <slot name="button"></slot>
     <hr />
     <count v-bind:initial-count="'10'"></count>

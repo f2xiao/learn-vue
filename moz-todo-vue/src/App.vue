@@ -11,7 +11,7 @@
     <p>App Root Comp</p>
     <hr>
     <div>
-      <div class="tab-box">
+      <div class="tab-box" v-if="showTabs">
         <button @click="showLeft" class="tab">show Left</button> 
         <button @click="showRight" class="tab">show Right</button>
       </div>
@@ -21,11 +21,13 @@
           <component :is="comName"></component>
         </keep-alive>
         <Right>
-         <template v-slot:smallText>
-            <p>this is the content area for the Right component</p>
+           <template v-slot:smallText>
+            <!-- <p>this is the content area for the Right component</p> -->
          </template>
          <template #button>
-            <button>Right button</button>
+           <div>
+              <button>Right button</button>
+           </div>
          </template>
         </Right>
       </div>
@@ -43,6 +45,7 @@ import ToDoItem from "@/components/ToDoItem.vue";
 export default {
   data(){
    return {
+     showTabs: false,
       comName:'Left',
       count: 99
    }
