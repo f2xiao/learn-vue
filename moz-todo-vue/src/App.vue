@@ -16,7 +16,8 @@
         <button @click="showRight" class="tab">show Right</button>
       </div>
       <div class="box">
-        <keep-alive>
+        <!-- exclude and include attributes use declared name if it existed -->
+        <keep-alive exclude="MyLeft">
           <component :is="comName"></component>
         </keep-alive>
       </div>
@@ -25,6 +26,7 @@
 </template>
 
 <script>
+// registered component name is Left
 import Left from "./components/Left.vue";
 import Right from "./components/Right.vue";
 // import HelloWorld from './components/HelloWorld.vue'

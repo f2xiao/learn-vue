@@ -11,6 +11,8 @@
 import count from "./count.vue";
 import bus from "./eventBus";
 export default {
+  // declared component name
+  name:"MyLeft",
   data: function () {
     return {
       countFromSon: 0,
