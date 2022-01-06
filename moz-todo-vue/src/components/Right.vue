@@ -17,6 +17,12 @@ export default {
       bus.$emit("gotAPoem", poem);
     },
   },
+  created() {
+    console.log("Right is created");
+  },
+  destroyed(){
+    console.log("Right is destoryed");
+  }
 };
 </script>
 <style lang="less" scoped>

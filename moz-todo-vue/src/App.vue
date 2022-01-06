@@ -12,7 +12,9 @@
     <hr>
     <div>
       <div class="tab-box">
-        <button @click="showLeft" class="tab">show Left</button>
+        
+          <button @click="showLeft" class="tab">show Left</button>
+       
         <button @click="showRight" class="tab">show Right</button>
       </div>
       <div class="box">

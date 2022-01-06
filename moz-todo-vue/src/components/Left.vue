@@ -27,6 +27,11 @@ export default {
     bus.$on("gotAPoem", (val) => {
       this.poemFromRight = val;
     });
+    console.log("Left is created");
+  },
+  destroyed() {
+     console.log("Left is destoryed");
+
   },
 };
 </script>
