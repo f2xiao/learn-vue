@@ -22,7 +22,13 @@ export default {
   },
   destroyed(){
     console.log("Right is destroyed");
-  }
+  },
+  activated() {
+    console.log("Right is activated")
+  },
+  deactivated() {
+    console.log("Right is deactivated")
+  },
 };
 </script>
 <style lang="less" scoped>
