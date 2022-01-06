@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <h3>Right Component</h3>
-    <slot></slot>
+    <slot name="smallText"></slot>
+    <slot name="button"></slot>
     <hr />
     <count v-bind:initial-count="'10'"></count>
     <button @click="generatePoem">pass a poem to the left</button>

@@ -21,7 +21,12 @@
           <component :is="comName"></component>
         </keep-alive>
         <Right>
-          <p>this is the content area for the Right component</p>
+         <template v-slot:smallText>
+            <p>this is the content area for the Right component</p>
+         </template>
+         <template #button>
+            <button>Right button</button>
+         </template>
         </Right>
       </div>
     </div>
