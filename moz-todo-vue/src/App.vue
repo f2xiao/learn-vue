@@ -2,18 +2,21 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <div class="to-do-list">
+    <!-- <div class="to-do-list">
       <h1>To-Do List</h1>
       <ul>
         <li><to-do-item label="My ToDo Item" :done="false"></to-do-item></li>
       </ul>
-    </div>
+    </div> -->
+    <p>App Root Comp</p>
+    <hr>
     <div>
-      <h1>Left and Right</h1>
-      <hr />
+      <div class="tab-box">
+        <button @click="showLeft" class="tab">show Left</button>
+        <button @click="showRight" class="tab">show Right</button>
+      </div>
       <div class="box">
-        <Left></Left>
-        <Right></Right>
+       <component :is="comName"></component>
       </div>
     </div>
   </div>
@@ -26,6 +29,20 @@ import Right from "./components/Right.vue";
 import ToDoItem from "./components/ToDoItem.vue";
 
 export default {
+  data(){
+   return {
+      comName:'Left',
+      isLeft: true,
+   }
+  },
+  methods: {
+   showLeft(){
+     this.comName = "Left"
+   },
+   showRight(){
+     this.comName = "Right"
+   }
+  },
   components: {
     ToDoItem,
     Left,
@@ -43,10 +60,25 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+*{
+  // margin:0;
+  padding:0;
+}
 ul,
 li {
   list-style: none;
+  
 }
+.tab-box{
+  display: flex;
+  width: 200px;
+}
+.tab{
+  flex: 1;
+  border: 1px solid #999;
+}
+
+
 .to-do-list {
   background: #99c3ec;
 }
