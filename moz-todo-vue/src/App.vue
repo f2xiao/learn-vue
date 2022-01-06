@@ -17,9 +17,12 @@
       </div>
       <div class="box">
         <!-- exclude and include attributes use declared name if it existed -->
-        <keep-alive exclude="MyLeft">
+        <keep-alive include="MyLeft">
           <component :is="comName"></component>
         </keep-alive>
+        <Right>
+          <p>this is the content area for the Right component</p>
+        </Right>
       </div>
     </div>
   </div>
@@ -27,16 +30,16 @@
 
 <script>
 // registered component name is Left
-import Left from "./components/Left.vue";
-import Right from "./components/Right.vue";
+import Left from "@/components/Slot-left.vue";
+import Right from "@/components/Slot-right.vue";
 // import HelloWorld from './components/HelloWorld.vue'
-import ToDoItem from "./components/ToDoItem.vue";
+import ToDoItem from "@/components/ToDoItem.vue";
 
 export default {
   data(){
    return {
       comName:'Left',
-      isLeft: true,
+      count: 99
    }
   },
   methods: {
