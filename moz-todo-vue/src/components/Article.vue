@@ -2,10 +2,10 @@
   <div class="article-container">
       <!-- title -->
       <div class="header-box">
-          <slot name="title" time="唐"></slot>
+          <slot name="title" time="唐" :user="userInfo"></slot>
       </div>
       <!-- content -->
-      <div class="content-box"><slot name="content" :user="userInfo"></slot></div>
+      <div class="content-box"><slot name="content" ></slot></div>
       <!-- author -->
       <div class="footer-box"><slot name="author"></slot></div>
   </div>

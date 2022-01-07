@@ -33,8 +33,8 @@
       </div>
       <!-- Article Comp -->
       <Article>
-        <template #title="scope">
-          <h3>俠客行 <span>{{scope.time}}</span></h3>
+        <template #title="{time,user}">
+          <h3>俠客行 <span>{{time}}</span><span>{{user}}</span></h3>
         </template>
         <template #content>
             <p>赵客缦胡缨，吴钩霜雪明；</p>
