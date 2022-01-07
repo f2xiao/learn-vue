@@ -5,7 +5,7 @@
     <h1>App Root Comp</h1>
     <hr />
     <h1 v-color="color">Testing</h1>
-    <button @click="changeToGrey">Change color to blue</button>
+    <button @click="changeToBlue">Change color to blue</button>
     <div class="box">
       <Left></Left>
       <Right></Right>
@@ -25,7 +25,7 @@ export default {
     };
   },
   methods: {
-    changeToGrey() {
+    changeToBlue() {
       this.color = "blue";
     },
   },
@@ -34,7 +34,7 @@ export default {
     Right,
   },
   directives: {
-    color: {
+    /* color: {
       bind(el, binding) {
         console.log(binding);
         // el.style.color = "green";
@@ -45,6 +45,11 @@ export default {
         // el.style.color = "green";
         el.style.color = binding.value;
       },
+    }, */
+
+    color(el, binding) {
+      console.log(binding);
+      el.style.color = binding.value;
     },
   },
 };
