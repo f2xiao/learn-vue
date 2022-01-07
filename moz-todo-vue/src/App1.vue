@@ -4,7 +4,7 @@
     <button @click="showThis">Print this</button>
     <button @click="onReset">Reset the count on Left Component </button>
     <hr>
-    <input type="text" v-if="inputVisible" ref="ipt">
+    <input type="text" v-if="inputVisible" ref="ipt" @blur="showButton">
     <button v-else @click="showInput">Show input</button>
     <hr>
    <Left ref="comLeft"></Left>
@@ -33,6 +33,9 @@ export default {
         this.$refs.ipt.focus();
      })
     },
+    showButton(){
+      this.inputVisible = false;
+    }
   },
   components:{
     Left
