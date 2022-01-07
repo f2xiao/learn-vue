@@ -2,10 +2,10 @@
   <div class="article-container">
       <!-- title -->
       <div class="header-box">
-          <slot name="title"></slot>
+          <slot name="title" time="唐"></slot>
       </div>
       <!-- content -->
-      <div class="content-box"><slot name="content"></slot></div>
+      <div class="content-box"><slot name="content" :user="userInfo"></slot></div>
       <!-- author -->
       <div class="footer-box"><slot name="author"></slot></div>
   </div>
@@ -14,6 +14,14 @@
 <script>
 export default {
     name: 'MyArticle',
+    data(){
+        return {
+            userInfo: {
+                age: 35,
+                nickName: '诗仙'
+            }
+        }
+    }
 }
 </script>
 

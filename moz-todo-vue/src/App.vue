@@ -33,8 +33,8 @@
       </div>
       <!-- Article Comp -->
       <Article>
-        <template #title>
-          <h3>俠客行</h3>
+        <template #title="scope">
+          <h3>俠客行 <span>{{scope.time}}</span></h3>
         </template>
         <template #content>
             <p>赵客缦胡缨，吴钩霜雪明；</p>
@@ -48,7 +48,7 @@
               <p>救赵挥金槌，邯郸先震惊；</p>
               <p>千秋二壮士，烜赫大梁城。</p>
               <p>纵死侠骨香，不惭世上英；</p>
-              <p>谁能书阁下，白首太玄经。</p>
+              <p>谁能书阁下，白首太玄经。</p>    
         </template>
         <template #author>
           <p>李白</p>
