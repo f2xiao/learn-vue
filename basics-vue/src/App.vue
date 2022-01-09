@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <h1>App Root Comp</h1>
-    <hr />
-    <ul>
+    <div class="links">
+      <ul class="nav">
       <li><router-link to="/home">Home</router-link></li>
       <li><router-link to="/movies">Movies</router-link></li>
       <li><router-link to="/about">About</router-link></li>
     </ul>
+    <ul class="acct">
+       <li><router-link to="/account">Account</router-link></li>
+      <li><router-link to="/login">Login</router-link></li>
+    </ul>
+    </div>
     
     
     
@@ -25,9 +29,23 @@ export default {};
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
 }
-ul,li{
+ul,li,a{
   list-style: none;
+  text-decoration: none;
+  height: 50px;
+}
+.links{
+  height: 50px;
+}
+li{
+  float: left;
+  width: 100px;
+}
+.nav{
+  float:left;
+}
+.acct{
+  float: right
 }
 </style>

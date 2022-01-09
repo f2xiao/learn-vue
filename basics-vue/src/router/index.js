@@ -7,6 +7,8 @@ import Movies from "@/components/Movies.vue";
 import Movie from "@/components/Movie.vue";
 import Left from "@/components/Left.vue";
 import Right from "@/components/Right.vue";
+import Acct from "@/components/Acct.vue";
+import Login from "@/components/Login.vue";
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -35,6 +37,9 @@ const router = new VueRouter({
         
       ]
     },
+    { path: "/account", component: Acct },
+    { path: "/login", component: Login },
+
   ],
 });
 export default router;
