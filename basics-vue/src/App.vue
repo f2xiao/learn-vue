@@ -5,6 +5,7 @@
     <router-link to="/home">Home</router-link>
     <router-link to="/movies">Movies</router-link>
     <router-link to="/about">About</router-link>
+ 
     <router-view></router-view>
   </div>
 </template>
