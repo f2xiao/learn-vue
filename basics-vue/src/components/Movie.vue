@@ -3,6 +3,9 @@
     <h1>Movie #:{{id}}</h1>
     <p>{{$route.fullPath}}</p>
     <button @click="showThis">Print this</button>
+    <button @click="gotoMovies">Go back to Movies</button>
+    <button @click="goBack">Go back</button>
+    <button @click="$router.forward()">Go forward</button>
   </div>
 </template>
 
@@ -12,7 +15,16 @@ export default {
   methods: {
     showThis(){
       console.log(this);
+    },
+    gotoMovies(){
+      this.$router.push('/movies')
+    },
+    goBack(){
+      this.$router.back()
     }
+    // goForward(){
+    //   this.$router.forward()
+    // }
   },
 
 
