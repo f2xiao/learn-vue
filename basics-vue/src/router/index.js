@@ -28,6 +28,7 @@ const router = new VueRouter({
     },
     {
       path: "/movies",
+      redirect:'/movies/3',
       component: Movies,
       children: [
         { path: '/movies/:id',component: Movie ,props: true},

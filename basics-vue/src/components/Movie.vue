@@ -1,6 +1,7 @@
 <template>
   <div class="movies-container">
     <h1>Movie #:{{id}}</h1>
+    <p>{{$route.fullPath}}</p>
     <button @click="showThis">Print this</button>
   </div>
 </template>
@@ -10,7 +11,7 @@ export default {
   props:['id'],
   methods: {
     showThis(){
-      console.log(this.id);
+      console.log(this);
     }
   },
 

@@ -2,9 +2,14 @@
   <div id="app">
     <h1>App Root Comp</h1>
     <hr />
-    <router-link to="/home">Home</router-link>
-    <router-link to="/movies">Movies</router-link>
-    <router-link to="/about">About</router-link>
+    <ul>
+      <li><router-link to="/home">Home</router-link></li>
+      <li><router-link to="/movies">Movies</router-link></li>
+      <li><router-link to="/about">About</router-link></li>
+    </ul>
+    
+    
+    
  
     <router-view></router-view>
   </div>
@@ -21,5 +26,8 @@ export default {};
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+ul,li{
+  list-style: none;
 }
 </style>

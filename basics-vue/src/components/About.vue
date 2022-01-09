@@ -1,8 +1,13 @@
 <template>
   <div class="about-container">
     <h1>About</h1>
-    <router-link to="/about">Left</router-link>
-    <router-link to="/about/right">Right</router-link>
+    <ul>
+      <li> <router-link to="/about">Left</router-link></li>
+      <li><router-link to="/about/right">Right</router-link></li>
+      
+    </ul>
+   
+    
     <router-view></router-view>
   </div>
 </template>
