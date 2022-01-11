@@ -20,31 +20,33 @@
 export default {};
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-ul,
-li,
-a {
-  list-style: none;
-  text-decoration: none;
-  height: 50px;
-}
-.links {
-  height: 50px;
-}
-li {
-  float: left;
-  width: 100px;
-}
-.nav {
-  float: left;
-}
-.acct {
-  float: right;
+
+  ul,
+  li,
+  a {
+    list-style: none;
+    text-decoration: none;
+    height: 50px;
+  }
+
+  .links {
+    height: 50px;
+  }
+  li {
+    float: left;
+    width: 100px;
+  }
+  .nav {
+    float: left;
+  }
+  .acct {
+    float: right;
+  }
 }
 </style>
