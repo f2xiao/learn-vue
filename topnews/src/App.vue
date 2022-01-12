@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>App Root Comp</h1>
-    <router-link to="/home">Home</router-link>
-    <router-link to="/user">User</router-link>
     <router-view></router-view>
+    <van-tabbar route>
+      <van-tabbar-item replace to="/home" icon="home-o">Home</van-tabbar-item>
+      <van-tabbar-item replace to="/user" icon="friends-o"
+        >User</van-tabbar-item
+      >
+    </van-tabbar>
   </div>
 </template>
 
