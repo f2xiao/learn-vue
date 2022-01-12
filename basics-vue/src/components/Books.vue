@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import request from "@/utils/request.js"
 export default {
   data() {
     return {
@@ -19,8 +20,9 @@ export default {
   },
   methods: {
     async initBooks() {
-      const { data: res } = await this.$http.get("/api/getBooks");
+      const { data: res } = await request.get("/api/getBooks");
       this.books = res.data;
+      console.log(res.data);
     },
   },
 };
@@ -37,9 +39,9 @@ export default {
     list-style: none;
     text-decoration: none;
   }
-  li {
-    float: left;
-    width: 100px;
-  }
+  // li {
+  //   float: left;
+  //   width: 100px;
+  // }
 }
 </style>
