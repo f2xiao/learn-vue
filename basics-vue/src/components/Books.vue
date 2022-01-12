@@ -1,6 +1,7 @@
 <template>
   <div class="books-container">
     <h1>Books</h1>
+    <button @click="postInfo">Send</button>
     <ul>
       <li v-for="book in books" :key="book.id">{{ book.bookname }}</li>
     </ul>
@@ -19,6 +20,11 @@ export default {
     this.initBooks();
   },
   methods: {
+    async postInfo(){
+      const { data: res } = await request.post("/api/post", {name:'Pixie',age:7});
+
+      console.log(res);
+    },
     async initBooks() {
       const { data: res } = await request.get("/api/getBooks");
       this.books = res.data;
@@ -30,6 +36,8 @@ export default {
 
 <style lang="less" scoped>
 .books-container {
+  margin:0;
+  padding: 0;
   min-height: 300px;
   background: orange;
 
