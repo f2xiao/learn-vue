@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Home</h1>
+  <div class="home-container">
+    <van-nav-bar title="Top News" fixed />
   </div>
 </template>
 
@@ -8,4 +8,15 @@
 export default {};
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.home-container {
+  padding: 46px 0 50px 0;
+  .van-nav-bar {
+    background-color: rgb(13, 160, 209);
+  }
+
+  /deep/ .van-nav-bar__title {
+    color: white;
+  }
+}
+</style>
