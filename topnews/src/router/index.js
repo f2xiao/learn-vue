@@ -7,6 +7,7 @@ import User from "@/views/User/User.vue";
 Vue.use(VueRouter);
 
 const routes = [
+  { path: "", redirect: "/home" },
   { path: "/home", component: Home },
   { path: "/user", component: User },
 ];

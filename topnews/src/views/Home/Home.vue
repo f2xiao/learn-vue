@@ -5,7 +5,19 @@
 </template>
 
 <script>
-export default {};
+import { getTopStoriesAPI } from "@/api/topStoriesAPI.js";
+export default {
+  name: "Home",
+  created() {
+    this.initStoriesList();
+  },
+  methods: {
+    async initStoriesList() {
+      const { data: res } = await getTopStoriesAPI();
+      console.log(res, res.length);
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
