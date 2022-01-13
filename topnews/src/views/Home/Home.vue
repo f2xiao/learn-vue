@@ -5,16 +5,33 @@
 </template>
 
 <script>
-import { getTopStoriesAPI } from "@/api/topStoriesAPI.js";
+import { getTopStoriesAPI, getTopStoryAPI } from "@/api/topStoriesAPI.js";
+
 export default {
   name: "Home",
+  data() {
+    return {
+      stories: [],
+    };
+  },
   created() {
     this.initStoriesList();
   },
   methods: {
     async initStoriesList() {
       const { data: res } = await getTopStoriesAPI();
-      console.log(res, res.length);
+
+      let promises = res.map(function (id) {
+        return getTopStoryAPI(`${id}`).then((result) => {
+          return result;
+        });
+      });
+
+      let results = await Promise.all(promises).then((results) => results);
+
+      results.forEach((item) => {
+        this.stories.push(item.data);
+      });
     },
   },
 };
