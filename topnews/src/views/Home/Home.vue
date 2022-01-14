@@ -1,13 +1,26 @@
 <template>
   <div class="home-container">
     <van-nav-bar title="Top News" fixed />
+
+    <Story
+      v-for="item in stories"
+      :key="item.id"
+      :title="item.title"
+      :by="item.by"
+      :time="item.time"
+      :url="item.url"
+      :score="item.score"
+      :descendants="item.descendants"
+    ></Story>
   </div>
 </template>
 
 <script>
 import { getTopStoriesAPI, getTopStoryAPI } from "@/api/topStoriesAPI.js";
+import Story from "@/components/Story/Story.vue";
 
 export default {
+  components: { Story },
   name: "Home",
   data() {
     return {
@@ -32,6 +45,8 @@ export default {
       results.forEach((item) => {
         this.stories.push(item.data);
       });
+
+      console.log(this.stories[1]);
     },
   },
 };
