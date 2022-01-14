@@ -2,7 +2,14 @@
   <div class="home-container">
     <van-nav-bar title="Top News" fixed />
 
-    <Story
+    
+<van-list
+  v-model="loading"
+  :finished="finished"
+  finished-text="Sorry no more stories!"
+  @load="onLoad"
+>
+ <Story
       v-for="item in stories"
       :key="item.id"
       :title="item.title"
@@ -12,6 +19,8 @@
       :score="item.score"
       :descendants="item.descendants"
     ></Story>
+</van-list>
+
   </div>
 </template>
 
@@ -28,6 +37,8 @@ export default {
       storiesIdArr: [],
       page:1,
       limit: 20,
+      loading: true,
+      finished: false,
     };
   },
 
@@ -38,13 +49,14 @@ export default {
     async initStories() {
       let { data: res } = await getTopStoriesAPI();
       this.storiesIdArr = res;
-      this.loadStories(this.page,this.limit);
+      this.stories=await this.loadStories(this.page,this.limit);
+      this.loading = false;
     },
 
     async loadStories(page, limit){
       const start = (page-1)*limit;
       const end = page*limit;
-      console.log(start,end);
+      let dataArr=[];
       let promises = this.storiesIdArr.slice(start,end).map(function (id) {
         return getTopStoryAPI(`${id}`).then((result) => {
           return result;
@@ -54,10 +66,26 @@ export default {
       let results = await Promise.all(promises).then((results) => results);
 
       results.forEach((item) => {
-        this.stories.push(item.data);
+        dataArr.push(item.data);
       });
-    }
-  },
+
+      return dataArr;
+    },
+    async onLoad(){
+       this.page++;
+      let moreStories = await this.loadStories(this.page, this.limit);
+      setTimeout(() => {
+        moreStories.forEach(item=>{
+          this.stories.push(item)
+        })
+        this.loading = false;
+
+        if (this.stories.length >= this.storiesIdArr.length) {
+          this.finished = true;
+        }
+      }, 1000);
+  }
+  }
 };
 </script>
 
