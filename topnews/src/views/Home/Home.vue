@@ -24,8 +24,13 @@ export default {
   name: "Home",
   data() {
     return {
-      stories: [],
+      totalStories: [],
     };
+  },
+  computed: {
+    stories() {
+      return this.totalStories.slice(0, 20);
+    },
   },
   created() {
     this.initStoriesList();
@@ -43,10 +48,8 @@ export default {
       let results = await Promise.all(promises).then((results) => results);
 
       results.forEach((item) => {
-        this.stories.push(item.data);
+        this.totalStories.push(item.data);
       });
-
-      console.log(this.stories[1]);
     },
   },
 };

@@ -80,7 +80,7 @@ li {
   }
   a {
     color: #828282;
-    text-decoration: underline;
+    text-decoration: none;
     &:hover {
       color: #ff6600;
     }
