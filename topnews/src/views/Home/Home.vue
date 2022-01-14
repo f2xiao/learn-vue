@@ -26,6 +26,8 @@ export default {
     return {
       stories: [],
       storiesIdArr: [],
+      page:1,
+      limit: 20,
     };
   },
 
@@ -35,9 +37,15 @@ export default {
   methods: {
     async initStories() {
       let { data: res } = await getTopStoriesAPI();
-      this.storiesIdArr = res.slice(0, 20);
+      this.storiesIdArr = res;
+      this.loadStories(this.page,this.limit);
+    },
 
-      let promises = this.storiesIdArr.map(function (id) {
+    async loadStories(page, limit){
+      const start = (page-1)*limit;
+      const end = page*limit;
+      console.log(start,end);
+      let promises = this.storiesIdArr.slice(start,end).map(function (id) {
         return getTopStoryAPI(`${id}`).then((result) => {
           return result;
         });
@@ -48,7 +56,7 @@ export default {
       results.forEach((item) => {
         this.stories.push(item.data);
       });
-    },
+    }
   },
 };
 </script>
