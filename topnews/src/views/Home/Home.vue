@@ -24,22 +24,20 @@ export default {
   name: "Home",
   data() {
     return {
-      totalStories: [],
+      stories: [],
+      storiesIdArr: [],
     };
   },
-  computed: {
-    stories() {
-      return this.totalStories.slice(0, 20);
-    },
-  },
+
   created() {
-    this.initStoriesList();
+    this.initStories();
   },
   methods: {
-    async initStoriesList() {
-      const { data: res } = await getTopStoriesAPI();
+    async initStories() {
+      let { data: res } = await getTopStoriesAPI();
+      this.storiesIdArr = res.slice(0, 20);
 
-      let promises = res.map(function (id) {
+      let promises = this.storiesIdArr.map(function (id) {
         return getTopStoryAPI(`${id}`).then((result) => {
           return result;
         });
@@ -48,7 +46,7 @@ export default {
       let results = await Promise.all(promises).then((results) => results);
 
       results.forEach((item) => {
-        this.totalStories.push(item.data);
+        this.stories.push(item.data);
       });
     },
   },

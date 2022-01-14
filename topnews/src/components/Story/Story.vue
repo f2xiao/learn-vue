@@ -29,12 +29,10 @@ export default {
       default: "",
     },
     score: {
-      type: String,
-      default: "",
+      type: Number,
     },
     time: {
-      type: String,
-      default: "",
+      type: Number,
     },
     url: {
       type: String,
@@ -45,8 +43,7 @@ export default {
       default: "",
     },
     descendants: {
-      type: String,
-      default: "",
+      type: Number,
     },
   },
 };
@@ -82,7 +79,7 @@ li {
     color: #828282;
     text-decoration: none;
     &:hover {
-      color: #ff6600;
+      color: rgb(13, 160, 209);
     }
   }
 }
