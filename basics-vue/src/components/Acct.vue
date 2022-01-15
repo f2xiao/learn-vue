@@ -5,13 +5,12 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="less" scoped>
 .acctount-container {
+  padding: 50px;
   min-height: 300px;
   background: blueviolet;
 }

@@ -32,7 +32,7 @@ export default {};
   a {
     list-style: none;
     text-decoration: none;
-    height: 50px;
+    height: 30px;
   }
 
   .links {

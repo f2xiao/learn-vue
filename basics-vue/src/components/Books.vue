@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import request from "@/utils/request.js"
+import request from "@/utils/request.js";
 export default {
   data() {
     return {
@@ -20,8 +20,11 @@ export default {
     this.initBooks();
   },
   methods: {
-    async postInfo(){
-      const { data: res } = await request.post("/api/post", {name:'Pixie',age:7});
+    async postInfo() {
+      const { data: res } = await request.post("/api/post", {
+        name: "Pixie",
+        age: 7,
+      });
 
       console.log(res);
     },
@@ -36,8 +39,8 @@ export default {
 
 <style lang="less" scoped>
 .books-container {
-  margin:0;
-  padding: 0;
+  padding: 50px;
+  margin: 0;
   min-height: 300px;
   background: orange;
 
