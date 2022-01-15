@@ -6,7 +6,11 @@
       <h2 v-show="isShow">Welcome!</h2>
     </transition>
     <button @click="isShow = !isShow">Show or Hide</button>
-    <transition-group name="show" appear>
+    <transition-group
+      enter-active-class="animate__animated animate__rotateIn"
+      leave-active-class="animate__animated animate__zoomOutDown"
+      appear
+    >
       <h2 v-show="isShow" key="1">Welcome!</h2>
       <h2 v-show="isShow" key="2">Welcome!</h2>
     </transition-group>
@@ -14,6 +18,7 @@
 </template>
 
 <script>
+import "animate.css";
 export default {
   data() {
     return {
