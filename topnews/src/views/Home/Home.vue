@@ -2,11 +2,12 @@
   <div class="home-container">
     <van-nav-bar title="Top News" fixed />
 
-    
+<van-pull-refresh v-model="refreshing" @refresh="onRefresh" loosing-text="refresh on release" loading-text="loading">    
 <van-list
   v-model="loading"
   :finished="finished"
   finished-text="Sorry no more stories!"
+  loading-text="Loading"
   @load="onLoad"
 >
  <Story
@@ -20,7 +21,7 @@
       :descendants="item.descendants"
     ></Story>
 </van-list>
-
+</van-pull-refresh>
   </div>
 </template>
 
@@ -39,6 +40,7 @@ export default {
       limit: 20,
       loading: true,
       finished: false,
+      refreshing: false,
     };
   },
 
@@ -75,16 +77,27 @@ export default {
        this.page++;
       let moreStories = await this.loadStories(this.page, this.limit);
       setTimeout(() => {
-        moreStories.forEach(item=>{
+        /* moreStories.forEach(item=>{
           this.stories.push(item)
-        })
+        }) */
+
+        if (this.refreshing) {
+          this.stories = [];
+          this.refreshing = false;
+        }
+        this.stories = [... this.stories, ...moreStories]
         this.loading = false;
 
         if (this.stories.length >= this.storiesIdArr.length) {
           this.finished = true;
         }
       }, 1000);
-  }
+  },
+  onRefresh() {
+      this.finished = false;
+      this.loading = true;
+      this.onLoad();
+    },
   }
 };
 </script>
