@@ -2,25 +2,29 @@
   <div class="home-container">
     <van-nav-bar title="Top News" fixed />
 
-<van-pull-refresh v-model="refreshing" @refresh="onRefresh" :disabled="finished">    
-<van-list
-  v-model="loading"
-  :finished="finished"
-  finished-text="Sorry no more stories!"
-  @load="onLoad"
->
- <Story
-      v-for="item in stories"
-      :key="item.id"
-      :title="item.title"
-      :by="item.by"
-      :time="item.time"
-      :url="item.url"
-      :score="item.score"
-      :descendants="item.descendants"
-    ></Story>
-</van-list>
-</van-pull-refresh>
+    <van-pull-refresh
+      v-model="refreshing"
+      @refresh="onRefresh"
+      :disabled="finished"
+    >
+      <van-list
+        v-model="loading"
+        :finished="finished"
+        finished-text="Sorry no more stories!"
+        @load="onLoad"
+      >
+        <Story
+          v-for="item in stories"
+          :key="item.id"
+          :title="item.title"
+          :by="item.by"
+          :time="item.time"
+          :url="item.url"
+          :score="item.score"
+          :descendants="item.descendants"
+        ></Story>
+      </van-list>
+    </van-pull-refresh>
   </div>
 </template>
 
@@ -34,7 +38,7 @@ export default {
   data() {
     return {
       storiesIdArr: [],
-      page:1,
+      page: 1,
       limit: 20,
       stories: [],
       loading: true,
@@ -50,15 +54,15 @@ export default {
     async initStories() {
       let { data: res } = await getTopStoriesAPI();
       this.storiesIdArr = res;
-      this.stories=await this.loadStories(this.page,this.limit);
+      this.stories = await this.loadStories(this.page, this.limit);
       this.loading = false;
     },
 
-    async loadStories(page, limit){
-      const start = (page-1)*limit;
-      const end = page*limit;
-      let dataArr=[];
-      let promises = this.storiesIdArr.slice(start,end).map(function (id) {
+    async loadStories(page, limit) {
+      const start = (page - 1) * limit;
+      const end = page * limit;
+      let dataArr = [];
+      let promises = this.storiesIdArr.slice(start, end).map(function (id) {
         return getTopStoryAPI(`${id}`).then((result) => {
           return result;
         });
@@ -72,8 +76,8 @@ export default {
 
       return dataArr;
     },
-    async onLoad(){
-       this.page++;
+    async onLoad() {
+      this.page++;
       let moreStories = await this.loadStories(this.page, this.limit);
       setTimeout(() => {
         /* moreStories.forEach(item=>{
@@ -84,31 +88,26 @@ export default {
           this.stories = [];
           this.refreshing = false;
         }
-          this.stories = [... this.stories, ...moreStories]
-          this.loading = false;
-        
-        
+        this.stories = [...this.stories, ...moreStories];
+        this.loading = false;
 
-        if (this.page*this.limit >= this.storiesIdArr.length) {
+        if (this.page * this.limit >= this.storiesIdArr.length) {
           this.finished = true;
         }
       }, 1000);
-  },
-  onRefresh() {
+    },
+    onRefresh() {
       this.finished = false;
       this.loading = true;
       this.onLoad();
     },
-  }
+  },
 };
 </script>
 
 <style lang="less" scoped>
 .home-container {
   padding: 46px 0 50px 0;
-  .van-nav-bar {
-    background-color: rgb(13, 160, 209);
-  }
 
   /deep/ .van-nav-bar__title {
     color: white;
