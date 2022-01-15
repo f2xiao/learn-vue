@@ -2,7 +2,7 @@
   <div class="home-container">
     <van-nav-bar title="Top News" fixed />
 
-<van-pull-refresh v-model="refreshing" @refresh="onRefresh" loosing-text="release to refresh" loading-text="loading">    
+<van-pull-refresh v-model="refreshing" @refresh="onRefresh" loosing-text="release to refresh" loading-text="loading" :disabled="finished">    
 <van-list
   v-model="loading"
   :finished="finished"
@@ -34,10 +34,10 @@ export default {
   name: "Home",
   data() {
     return {
-      stories: [],
       storiesIdArr: [],
       page:1,
-      limit: 20,
+      limit: 250,
+      stories: [],
       loading: true,
       finished: false,
       refreshing: false,
@@ -85,10 +85,12 @@ export default {
           this.stories = [];
           this.refreshing = false;
         }
-        this.stories = [... this.stories, ...moreStories]
-        this.loading = false;
+          this.stories = [... this.stories, ...moreStories]
+          this.loading = false;
+        
+        
 
-        if (this.stories.length >= this.storiesIdArr.length) {
+        if (this.page*this.limit >= this.storiesIdArr.length) {
           this.finished = true;
         }
       }, 1000);
