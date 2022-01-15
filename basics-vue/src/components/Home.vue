@@ -1,8 +1,11 @@
 <template>
   <div class="home-container">
     <h1>Home</h1>
+
+    <transition name="show">
+      <h2 v-show="isShow">Welcome!</h2>
+    </transition>
     <button @click="isShow = !isShow">Show or Hide</button>
-    <h2 v-show="isShow" class="enter">Welcome!</h2>
   </div>
 </template>
 
@@ -23,13 +26,13 @@ export default {
   background: pink;
 
   h2 {
-    background-color: lightblue;
+    width: 100px;
   }
 
-  .enter {
+  .show-enter-active {
     animation: show 0.5s;
   }
-  .leave {
+  .show-leave-active {
     animation: show 0.5s reverse;
   }
 
