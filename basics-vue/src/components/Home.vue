@@ -6,6 +6,10 @@
       <h2 v-show="isShow">Welcome!</h2>
     </transition>
     <button @click="isShow = !isShow">Show or Hide</button>
+    <transition-group name="show" appear>
+      <h2 v-show="isShow" key="1">Welcome!</h2>
+      <h2 v-show="isShow" key="2">Welcome!</h2>
+    </transition-group>
   </div>
 </template>
 
