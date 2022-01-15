@@ -2,7 +2,7 @@
   <div class="home-container">
     <h1>Home</h1>
 
-    <transition name="show">
+    <transition name="hello">
       <h2 v-show="isShow">Welcome!</h2>
     </transition>
     <button @click="isShow = !isShow">Show or Hide</button>
@@ -29,6 +29,7 @@ export default {
     width: 100px;
   }
 
+  // animation method
   .show-enter-active {
     animation: show 0.5s;
   }
@@ -43,6 +44,16 @@ export default {
     to {
       transform: translateX(0);
     }
+  }
+
+  // transition method
+  .hello-enter,
+  .hello-leave-to {
+    transform: translateX(-100%);
+  }
+  .hello-enter-active,
+  .hello-leave-active {
+    transition: 0.5s linear;
   }
 }
 </style>
