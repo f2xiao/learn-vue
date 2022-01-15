@@ -2,7 +2,7 @@
   <div class="home-container">
     <van-nav-bar title="Top News" fixed />
 
-<van-pull-refresh v-model="refreshing" @refresh="onRefresh" loosing-text="refresh on release" loading-text="loading">    
+<van-pull-refresh v-model="refreshing" @refresh="onRefresh" loosing-text="release to refresh" loading-text="loading">    
 <van-list
   v-model="loading"
   :finished="finished"
