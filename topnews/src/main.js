@@ -5,7 +5,14 @@ import router from "@/router";
 import Vant from "vant";
 import "vant/lib/index.css";
 
+import { Locale } from 'vant';
+// import English Language pack
+import enUS from 'vant/es/locale/lang/en-US';
+
 Vue.use(Vant);
+
+
+Locale.use('en-US', enUS);
 
 Vue.config.productionTip = false;
 

@@ -2,12 +2,11 @@
   <div class="home-container">
     <van-nav-bar title="Top News" fixed />
 
-<van-pull-refresh v-model="refreshing" @refresh="onRefresh" loosing-text="release to refresh" loading-text="loading" :disabled="finished">    
+<van-pull-refresh v-model="refreshing" @refresh="onRefresh" :disabled="finished">    
 <van-list
   v-model="loading"
   :finished="finished"
   finished-text="Sorry no more stories!"
-  loading-text="Loading"
   @load="onLoad"
 >
  <Story
@@ -36,7 +35,7 @@ export default {
     return {
       storiesIdArr: [],
       page:1,
-      limit: 250,
+      limit: 20,
       stories: [],
       loading: true,
       finished: false,
