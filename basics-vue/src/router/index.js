@@ -49,7 +49,8 @@ router.beforeEach((to, from, next) => {
   if (to.path === "/account") {
     const token = localStorage.getItem("token");
     if (token) {
-      next();
+      if (token === "123456") next();
+      else next("/login");
     } else {
       next("/login");
     }
