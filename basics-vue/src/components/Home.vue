@@ -14,17 +14,20 @@
       <h2 v-show="isShow" key="1">Welcome!</h2>
       <h2 v-show="isShow" key="2">Welcome!</h2>
     </transition-group>
+    <Count></Count>
   </div>
 </template>
 
 <script>
 import "animate.css";
+import Count from "@/components/Count2.vue";
 export default {
   data() {
     return {
       isShow: true,
     };
   },
+  components: { Count },
 };
 </script>
 
