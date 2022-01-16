@@ -2,10 +2,14 @@
   <div class="home-container">
     <h1>Home</h1>
 
+    <hr />
+    <h3>Animation with css transition</h3>
     <transition name="hello">
       <h2 v-show="isShow">Welcome!</h2>
     </transition>
     <button @click="isShow = !isShow">Show or Hide</button>
+    <hr />
+    <h3>Animation with animate.css</h3>
     <transition-group
       enter-active-class="animate__animated animate__rotateIn"
       leave-active-class="animate__animated animate__zoomOutDown"
@@ -15,19 +19,23 @@
       <h2 v-show="isShow" key="2">Welcome!</h2>
     </transition-group>
     <Count></Count>
+    <hr />
+    <h3>Count with Vuex</h3>
+    <Count1></Count1>
   </div>
 </template>
 
 <script>
 import "animate.css";
 import Count from "@/components/Count2.vue";
+import Count1 from "@/components/Count3.vue";
 export default {
   data() {
     return {
       isShow: true,
     };
   },
-  components: { Count },
+  components: { Count, Count1 },
 };
 </script>
 
