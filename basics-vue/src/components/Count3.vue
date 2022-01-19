@@ -17,12 +17,16 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
   data() {
     return {
-      sum: 0,
       n: 1,
     };
+  },
+  computed: {
+    // ...mapState({sum:'sum',countSchool:'school'})
+    ...mapState(['sum','school'])
   },
   mounted() {
     console.log('Count with Vuex',this.$store);

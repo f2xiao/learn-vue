@@ -27,7 +27,9 @@ const mutations = {
     }
 }
 const state = {
-    sum: 0
+    sum: 0,
+    school: 'UW',
+    program: 'ME',
 }
 
 const getters = {
