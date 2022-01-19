@@ -23,6 +23,9 @@ export default {
       n: 1,
     };
   },
+  mounted() {
+    console.log('Count with Vuex',this);
+  },
   methods: {
     increment() {
       this.sum += this.n;

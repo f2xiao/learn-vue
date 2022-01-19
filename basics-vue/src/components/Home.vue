@@ -18,24 +18,27 @@
       <h2 v-show="isShow" key="1">Welcome!</h2>
       <h2 v-show="isShow" key="2">Welcome!</h2>
     </transition-group>
-    <Count></Count>
+    <Count2></Count2>
     <hr />
     <h3>Count with Vuex</h3>
-    <Count1></Count1>
+    <Count3></Count3>
   </div>
 </template>
 
 <script>
 import "animate.css";
-import Count from "@/components/Count2.vue";
-import Count1 from "@/components/Count3.vue";
+import Count2 from "@/components/Count2.vue";
+import Count3 from "@/components/Count3.vue";
 export default {
   data() {
     return {
       isShow: true,
     };
   },
-  components: { Count, Count1 },
+   mounted() {
+    console.log('Home',this);
+  },
+  components: { Count2, Count3 },
 };
 </script>
 
