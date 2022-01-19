@@ -17,22 +17,29 @@ const actions = {
     }
 }
 const mutations = {
-    add(context, value) {
+    add(state, value) {
         // console.log(context);
         // console.log(this);
-        context.sum += value
+        state.sum += value
     },
-    subtract(context, value) {
-        context.sum -= value
+    subtract(state, value) {
+        state.sum -= value
     }
 }
 const state = {
     sum: 0
 }
 
+const getters = {
+    computedSum(state) {
+        return state.sum * 100;
+    }
+}
+
 export default new Vuex.Store({
     actions,
     mutations,
-    state
+    state,
+    getters
 })
 

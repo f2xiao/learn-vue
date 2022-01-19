@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Current sum is : {{ this.$store.state.sum }}</h1>
+    <h1>Current sum is : {{ $store.state.sum }}</h1>
+    <h1>Getters sum is : {{ $store.getters.computedSum }}</h1>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -24,7 +25,7 @@ export default {
     };
   },
   mounted() {
-    // console.log('Count with Vuex',this);
+    console.log('Count with Vuex',this.$store);
   },
   methods: {
     increment(n) {
