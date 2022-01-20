@@ -9,15 +9,13 @@
     </select>
     <button @click="increment(n)">+</button>
     <button @click="decrement(n)">-</button>
-    <button @click="oddIncrement(n)">When the sum is odd then add again</button>
-    <button @click="waitIncrement(n)">
-      Wait for a few seconds then add again
-    </button>
+    <button @click="odd(n)">When the sum is odd then add again</button>
+    <button @click="wait(n)">Wait for a few seconds then add again</button>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 export default {
   data() {
     return {
@@ -33,19 +31,22 @@ export default {
     console.log("Count with Vuex", this.$store);
   },
   methods: {
-    increment(n) {
-      this.$store.commit("add", n);
-    },
-    decrement(n) {
-      this.$store.commit("subtract", n);
-    },
+    // increment(n) {
+    //   this.$store.commit("add", n);
+    // },
+    // decrement(n) {
+    //   this.$store.commit("subtract", n);
+    // },
 
-    oddIncrement(n) {
+    ...mapMutations({ increment: "add", decrement: "subtract" }),
+
+    /* odd(n) {
       this.$store.dispatch("odd", n);
     },
-    waitIncrement(n) {
+    wait(n) {
       this.$store.dispatch("wait", n);
-    },
+    }, */
+    ...mapActions(["odd", "wait"]),
   },
 };
 </script>
