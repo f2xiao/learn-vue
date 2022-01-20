@@ -2,6 +2,14 @@
   <div class="home-container">
     <h1>Home</h1>
 
+    <Count2></Count2>
+    <hr />
+    <h3>Count with Vuex</h3>
+    <Count3></Count3>
+    <hr />
+    <h3>Person with Vuex</h3>
+    <Person></Person>
+
     <hr />
     <h3>Animation with css transition</h3>
     <transition name="hello">
@@ -18,10 +26,6 @@
       <h2 v-show="isShow" key="1">Welcome!</h2>
       <h2 v-show="isShow" key="2">Welcome!</h2>
     </transition-group>
-    <Count2></Count2>
-    <hr />
-    <h3>Count with Vuex</h3>
-    <Count3></Count3>
   </div>
 </template>
 
@@ -29,16 +33,17 @@
 import "animate.css";
 import Count2 from "@/components/Count2.vue";
 import Count3 from "@/components/Count3.vue";
+import Person from "@/components/Person.vue";
 export default {
   data() {
     return {
       isShow: true,
     };
   },
-   mounted() {
-    console.log('Home',this);
+  mounted() {
+    console.log("Home", this);
   },
-  components: { Count2, Count3 },
+  components: { Count2, Count3, Person },
 };
 </script>
 
