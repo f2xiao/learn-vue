@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Current sum is : {{ $store.state.sum }}</h1>
-    <h1>Getters sum is : {{ $store.getters.computedSum }}</h1>
+    <h1>Current sum is : {{ sum }}</h1>
+    <h1>Getters sum is : {{ mySum }}</h1>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import { mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {
@@ -26,23 +26,25 @@ export default {
   },
   computed: {
     // ...mapState({sum:'sum',countSchool:'school'})
-    ...mapState(['sum','school'])
+    ...mapState(["sum", "school"]),
+    ...mapGetters({ mySum: "computedSum" }),
   },
   mounted() {
-    console.log('Count with Vuex',this.$store);
+    console.log("Count with Vuex", this.$store);
   },
   methods: {
     increment(n) {
-      this.$store.commit('add', n)
+      this.$store.commit("add", n);
     },
     decrement(n) {
-      this.$store.commit('subtract', n)
+      this.$store.commit("subtract", n);
     },
+
     oddIncrement(n) {
-     this.$store.dispatch('odd', n)
+      this.$store.dispatch("odd", n);
     },
     waitIncrement(n) {
-      this.$store.dispatch('wait', n)
+      this.$store.dispatch("wait", n);
     },
   },
 };
