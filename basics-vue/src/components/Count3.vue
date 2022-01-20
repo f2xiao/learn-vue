@@ -2,6 +2,7 @@
   <div>
     <h1>Current sum is : {{ sum }}</h1>
     <h1>Getters sum is : {{ mySum }}</h1>
+    <h1>Total number of people in Person component: {{ list.length }}</h1>
     <select v-model.number="n">
       <option value="1">1</option>
       <option value="2">2</option>
@@ -25,6 +26,7 @@ export default {
   computed: {
     // ...mapState({sum:'sum',countSchool:'school'})
     ...mapState("count", ["sum", "school", "program"]),
+    ...mapState("person", ["list"]),
     mySum() {
       return this.$store.getters["count/computedSum"];
     },

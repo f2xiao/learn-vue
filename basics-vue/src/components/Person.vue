@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Person List</h1>
+    <h1>Sum in Count component: {{ sum }}</h1>
     <input v-model="name" type="text" placeholder="Type a person's name" />
     <button @click="addPerson(name)">Add</button>
     <ul>
@@ -21,9 +22,12 @@ export default {
     };
   },
   computed: {
-    // ...mapState("person", ["list"]),
-    list() {
-      return this.$store.state.person.list;
+    ...mapState("person", ["list"]),
+    // list() {
+    //   return this.$store.state.person.list;
+    // },
+    sum() {
+      return this.$store.state.count.sum;
     },
   },
   methods: {
