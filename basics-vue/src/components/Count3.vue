@@ -24,8 +24,11 @@ export default {
   },
   computed: {
     // ...mapState({sum:'sum',countSchool:'school'})
-    ...mapState(["sum", "school"]),
-    ...mapGetters({ mySum: "computedSum" }),
+    ...mapState("count", ["sum", "school", "program"]),
+    mySum() {
+      return this.$store.getters["count/computedSum"];
+    },
+    // ...mapGetters({ mySum: "computedSum" }),
   },
   mounted() {
     console.log("Count with Vuex", this.$store);
@@ -37,8 +40,11 @@ export default {
     // decrement(n) {
     //   this.$store.commit("subtract", n);
     // },
+    decrement(n) {
+      this.$store.commit("count/subtract", n);
+    },
 
-    ...mapMutations({ increment: "add", decrement: "subtract" }),
+    ...mapMutations("count", { increment: "add" }),
 
     /* odd(n) {
       this.$store.dispatch("odd", n);
@@ -46,7 +52,7 @@ export default {
     wait(n) {
       this.$store.dispatch("wait", n);
     }, */
-    ...mapActions(["odd", "wait"]),
+    ...mapActions("count", ["odd", "wait"]),
   },
 };
 </script>

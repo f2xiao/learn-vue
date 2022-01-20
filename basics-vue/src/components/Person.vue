@@ -4,23 +4,32 @@
     <input v-model="name" type="text" placeholder="Type a person's name" />
     <button @click="addPerson(name)">Add</button>
     <ul>
-      <li v-for="p in list" :key="list.indexOf(p)">{{ p }}</li>
+      <li v-for="p in list" :key="list.indexOf(p)">
+        {{ p }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "Person",
   data() {
     return {
       name: "",
-      list: [],
     };
+  },
+  computed: {
+    // ...mapState("person", ["list"]),
+    list() {
+      return this.$store.state.person.list;
+    },
   },
   methods: {
     addPerson(name) {
-      this.list.push(name);
+      this.$store.commit("person/addPerson", name);
+      this.name = "";
     },
   },
 };
