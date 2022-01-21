@@ -17,12 +17,14 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
+import { initN } from "@/mixin";
 export default {
-  data() {
-    return {
-      n: 1,
-    };
-  },
+  // data() {
+  //   return {
+  //     n: 1,
+  //   };
+  // },
+  mixins: [initN],
   computed: {
     // ...mapState({sum:'sum',countSchool:'school'})
     ...mapState("count", ["sum", "school", "program"]),
