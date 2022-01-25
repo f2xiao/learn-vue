@@ -28,19 +28,25 @@ export default {
   },
   methods: {
     addMovie() {
-      console.log(this.movie);
+      /* console.log(this.movie);
       this.movie["name"] = "Alice in Wonderland";
-      console.log(this.movie);
+      console.log(this.movie); */
+      this.$set(this.movie, "name", "Alice in Wonderland");
       this.movies.push(this.movie);
+      // this.movie.id++;
+      // delete this.movie.name;
     },
     modifyMovies() {
       // Vue 2 can't react to the data change of the new added property in an object
-      this.movie.name = "Black Widow";
+      // this.movie.name = "Black Widow";
+      this.$set(this.movie, "name", "Black Widow");
       // this.movies[1].name = "Alice in Wonderland";
     },
     deleteMovie() {
       // Vue 2 can't react to the data change of the new added property in an object
-      this.movie.name = "";
+      // delete this.movie.name;
+      this.$delete(this.movie, "name");
+      console.log(this.movie);
     },
   },
 };
