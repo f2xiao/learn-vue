@@ -18,12 +18,13 @@
 export default {
   data() {
     return {
+      id: 4,
       movies: [
         { id: 1, name: "Loki" },
         { id: 2, name: "Captain American" },
         { id: 3, name: "Hulk" },
       ],
-      movie: { id: 4 },
+      movie: {},
     };
   },
   methods: {
@@ -31,10 +32,13 @@ export default {
       /* console.log(this.movie);
       this.movie["name"] = "Alice in Wonderland";
       console.log(this.movie); */
+
       this.$set(this.movie, "name", "Alice in Wonderland");
+      this.$set(this.movie, "id", this.id);
       this.movies.push(this.movie);
       // this.movie.id++;
       // delete this.movie.name;
+      this.id++;
     },
     modifyMovies() {
       // Vue 2 can't react to the data change of the new added property in an object
