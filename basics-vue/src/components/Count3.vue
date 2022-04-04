@@ -32,7 +32,7 @@ export default {
     console.log('Count with Vuex',this.$store);
   },
   methods: {
-    increment(n) {
+    increment(n) { 
       this.$store.commit('add', n)
     },
     decrement(n) {
