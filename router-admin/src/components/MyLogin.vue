@@ -33,8 +33,12 @@
         </div>
         <!-- 登录和重置按钮 -->
         <div class="form-group form-inline d-flex justify-content-end">
-          <button type="button" class="btn btn-secondary mr-2" @click="reset">重置</button>
-          <button type="button" class="btn btn-primary" @click="login">登录</button>
+          <button type="button" class="btn btn-secondary mr-2" @click="reset">
+            重置
+          </button>
+          <button type="button" class="btn btn-primary" @click="login">
+            登录
+          </button>
         </div>
       </div>
     </div>
@@ -43,32 +47,32 @@
 
 <script>
 export default {
-  name: 'MyLogin',
+  name: "MyLogin",
   data() {
     return {
-      username: '',
-      password: ''
-    }
+      username: "",
+      password: "",
+    };
   },
   methods: {
     reset() {
-      this.username = ''
-      this.password = ''
+      this.username = "";
+      this.password = "";
     },
     login() {
-      if (this.username === 'admin' && this.password === '666666') {
+      if (this.username === "admin" && this.password === "666666") {
         // 登录成功
         // 1. 存储 token
-        localStorage.setItem('token', 'Bearer xxxx')
+        localStorage.setItem("token", "Bearer xxxx");
         // 2. 跳转到后台主页
-        this.$router.push('/home')
+        this.$router.push("/home");
       } else {
         // 登录失败
-        localStorage.removeItem('token')
+        localStorage.removeItem("token");
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>

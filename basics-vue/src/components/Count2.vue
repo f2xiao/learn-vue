@@ -16,13 +16,15 @@
 </template>
 
 <script>
+import { initN } from "@/mixin";
 export default {
   data() {
     return {
       sum: 0,
-      n: 1,
+      // n: 1,
     };
   },
+  mixins: [initN],
   methods: {
     increment() {
       this.sum += this.n;
